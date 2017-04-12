@@ -1,0 +1,23 @@
+{
+  "name": "firebase-presentation-slide",
+  "version": "1.0.0",
+  "description": "Presentation Remote Control",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/primayudhamanggala/firebase-presentation-slide.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/primayudhamanggala/firebase-presentation-slide/issues"
+  },
+  "homepage": "https://github.com/primayudhamanggala/firebase-presentation-slide#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "firebase": "^3.7.6"
+  }
+}

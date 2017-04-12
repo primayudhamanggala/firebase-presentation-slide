@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <title>W3.CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+  <body>
+
+  <h2 class="w3-center">Manual Slideshow</h2>
+
+  <div class="w3-content w3-display-container">
+    <img class="mySlides" src="img/1.jpg" style="width:100%">
+    <img class="mySlides" src="img/3.jpg" style="width:100%">
+    <img class="mySlides" src="img/4.jpg" style="width:100%">
+
+    <button class="w3-button w3-black w3-display-left" >&#10094;</button>
+    <button class="w3-button w3-black w3-display-right">&#10095;</button>
+  </div>
+
+  <script>
+
+  var slideIndex = 1;
+  showDivs(slideIndex);
+
+  var config = {
+    apiKey: "AIzaSyA63RGgIoHkECs62_gleYqOJVyUeLJn5ag",
+    authDomain: "presentation-remote-control.firebaseapp.com",
+    databaseURL: "https://presentation-remote-control.firebaseio.com",
+    projectId: "presentation-remote-control",
+    storageBucket: "presentation-remote-control.appspot.com",
+    messagingSenderId: "644410959839"
+  };
+
+
+  firebase.initializeApp(config);
+
+
+  //to listen
+  var starCountRef = firebase.database().ref('command/1');
+  starCountRef.on('value', function(snapshot) {
+    let command = snapshot.val().cmd
+    if (command == 'right') {
+      plusDivs(1)
+    } else if (command == 'left'){
+      plusDivs(-1)
+    }
+  });
+
+
+
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+
+
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      if (n > x.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = x.length}
+      for (i = 0; i < x.length; i++) {
+         x[i].style.display = "none";
+      }
+      x[slideIndex-1].style.display = "block";
+    }
+  </script>
+
+  </body>
+</html>
